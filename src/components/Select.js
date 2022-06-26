@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const options = [
   { value: 'normal', label: 'Normal' },
@@ -8,17 +9,36 @@ const options = [
 
 class SelectRarity extends React.Component {
   render() {
+    const { rarity, onChangeFunc } = this.props;
     return (
       <label htmlFor="rarity">
         Raridade:
-        <select id="rarity" data-testid="rare-input">
+        <select
+          id="rarity"
+          data-testid="rare-input"
+          value={ rarity }
+          onChange={ onChangeFunc }
+        >
           {options.map((i) => {
-            const newO = <option value={ i.value } key={ i.value }>{ i.label }</option>;
-            return (newO);
+            const newObject = (
+              <option
+                value={ i.value }
+                key={ i.value }
+              >
+                { i.label }
+              </option>
+            );
+            return (newObject);
           })}
         </select>
       </label>
     );
   }
 }
+
+SelectRarity.propTypes = {
+  rarity: PropTypes.string.isRequired,
+  onChangeFunc: PropTypes.func.isRequired,
+};
+
 export default SelectRarity;
