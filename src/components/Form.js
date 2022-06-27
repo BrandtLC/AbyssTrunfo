@@ -13,7 +13,6 @@ class Form extends React.Component {
   render() {
     const {
       cardName,
-      onInputChange,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -21,6 +20,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      onInputChange,
       isSaveButtonDisabled,
       onSaveButtonClick,
     } = this.props;
@@ -104,33 +104,18 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  cardName: PropTypes.string,
-  cardDescription: PropTypes.string,
-  cardAttr1: PropTypes.string,
-  cardAttr2: PropTypes.string,
-  cardAttr3: PropTypes.string,
-  cardImage: PropTypes.string,
-  cardRare: PropTypes.string,
-  cardTrunfo: PropTypes.bool,
-  hasTrunfo: PropTypes.bool,
-  isSaveButtonDisabled: PropTypes.bool,
-  onInputChange: PropTypes.func,
-  onSaveButtonClick: PropTypes.func,
-};
-
-Form.defaultProps = {
-  cardName: 'Nome da carta',
-  cardDescription: 'Descrição da carta',
-  cardAttr1: '12',
-  cardAttr2: '34',
-  cardAttr3: '56',
-  cardImage: 'url-to-image',
-  cardRare: 'raro',
-  cardTrunfo: true,
-  hasTrunfo: false,
-  isSaveButtonDisabled: false,
-  onInputChange: () => { },
-  onSaveButtonClick: () => { },
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
 };
 
 export default Form;

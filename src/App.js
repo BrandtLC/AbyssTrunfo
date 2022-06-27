@@ -3,7 +3,6 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 
-const imputChange = () => 2;
 const saveButton = () => 2;
 
 class App extends React.Component {
@@ -16,7 +15,7 @@ class App extends React.Component {
       atr2: '',
       atr3: '',
       image: '',
-      rarity: '',
+      rarity: 'normal',
       isTrunfo: false,
       isThereTrunfo: false,
       save: true,
@@ -61,7 +60,14 @@ render() {
   };
 
   const cardProps = {
-
+    cardName: name,
+    cardImage: image,
+    cardDescription: description,
+    cardAttr1: atr1,
+    cardAttr2: atr2,
+    cardAttr3: atr3,
+    cardRare: rarity,
+    cardTrunfo: isTrunfo,
   };
 
   return (
@@ -70,18 +76,7 @@ render() {
         <h1>Abyss Trunfo</h1>
         <Form { ...formProps } />
       </div>
-      <Card
-        cardData={ {
-          cardName: name,
-          cardDescription: description,
-          cardAttr1: atr1,
-          cardAttr2: atr2,
-          cardAttr3: atr3,
-          cardImage: image,
-          cardRare: rarity,
-          cardTrunfo: isTrunfo,
-        } }
-      />
+      <Card { ...cardProps } />
     </>
   );
 }
