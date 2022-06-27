@@ -41,6 +41,7 @@ class Form extends React.Component {
         <label htmlFor="description">
           Descrição
           <textarea
+            name="description"
             cols="30"
             rows="10"
             data-testid="description-input"
@@ -62,6 +63,7 @@ class Form extends React.Component {
           Imagem
           <input
             type="text"
+            name="image"
             id="path"
             data-testid="image-input"
             value={ cardImage }
@@ -78,6 +80,7 @@ class Form extends React.Component {
           Super Trunfo
           <input
             type="checkbox"
+            name="isTrunfo"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
@@ -87,12 +90,14 @@ class Form extends React.Component {
         <button
           data-testid="save-button"
           type="button"
+          name="save"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
           Salvar
 
         </button>
+
       </form>
     );
   }

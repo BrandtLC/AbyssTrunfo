@@ -15,6 +15,7 @@ class SelectRarity extends React.Component {
         Raridade:
         <select
           id="rarity"
+          name="rarity"
           data-testid="rare-input"
           value={ rarity }
           onChange={ onChangeFunc }
