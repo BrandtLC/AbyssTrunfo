@@ -99,6 +99,7 @@ class App extends React.Component {
       isTrunfo,
       isThereTrunfo,
       save,
+      cards,
     } = this.state;
 
     const formProps = {
@@ -116,7 +117,7 @@ class App extends React.Component {
       onSaveButtonClick: this.handleSubmit,
     };
 
-    const cardProps = {
+    const cardPreviewProps = {
       cardName: name,
       cardImage: image,
       cardDescription: description,
@@ -127,13 +128,25 @@ class App extends React.Component {
       cardTrunfo: isTrunfo,
     };
 
+    const cardProps = {
+      cardName: cards.name,
+      cardImage: cards.image,
+      cardDescription: cards.description,
+      cardAttr1: cards.atr1,
+      cardAttr2: cards.atr2,
+      cardAttr3: cards.atr3,
+      cardRare: cards.rarity,
+      cardTrunfo: cards.isTrunfo,
+    }
+
     return (
       <>
         <div>
           <h1>Abyss Trunfo</h1>
           <Form { ...formProps } />
+          <Card { ...cardPreviewProps } />
         </div>
-        <Card { ...cardProps } />
+        { cards ? <Card { ...cardProps } /> : '' }
       </>
     );
   }
