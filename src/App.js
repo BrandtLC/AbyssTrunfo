@@ -37,11 +37,20 @@ class App extends React.Component {
     const { name: param } = target;
 
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [param]: value }, () => this.validate(this.state));
+    this.setState({ [param]: value }, () => {
+      this.validate(this.state);
+    });
+  }
+
+  validadeCheckbox = () => {
+    const { state } = this;
+    if (state.cards.find((c) => c.cardTrunfo === true)) {
+      this.setState({ hasTrunfo: true });
+    } else { this.setState({ hasTrunfo: false }); }
   }
 
   handleSubmit = (event) => {
-    const { state } = this;
+    const ms = 0;
     event.preventDefault();
     this.setState((prevState) => ({
       cards: [...prevState.cards,
@@ -54,11 +63,12 @@ class App extends React.Component {
           cardImage: prevState.cardImage,
           cardRare: prevState.cardRare,
           cardTrunfo: prevState.cardTrunfo,
+          key: prevState.cardName,
         }] }));
     this.setState(INITIAL_STATE);
-    if (state.cards.find((c) => c.cardTrunfo === true)) {
-      this.setState({ hasTrunfo: false });
-    } else { this.setState({ hasTrunfo: true }); }
+    setTimeout(() => {
+      this.validadeCheckbox();
+    }, ms);
   }
 
   validate = (state) => {
@@ -131,9 +141,8 @@ class App extends React.Component {
     };
 
     const userCards = cards.map((c) => {
-      const prop = c;
-      if (prop) {
-        return (<Card key={ prop.Cardname } { ...prop } />);
+      if (c) {
+        return (<Card key={ c.key } { ...c } />);
       }
       return ('');
     });

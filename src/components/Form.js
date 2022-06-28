@@ -33,7 +33,6 @@ class Form extends React.Component {
               data-testid="trunfo-input"
               checked={ cardTrunfo }
               onChange={ onInputChange }
-              disabled={ hasTrunfo }
             />
           </label>);
       } return ('');
@@ -92,8 +91,6 @@ class Form extends React.Component {
         />
 
         { renderCheckbox() }
-
-        { console.log(cards) }
 
         { cards && cards.find((c) => c.cardTrunfo === true)
           ? <p>Você já tem um Super Trunfo em seu baralho</p>
