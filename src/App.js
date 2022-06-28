@@ -12,7 +12,6 @@ const INITIAL_STATE = {
   cardImage: '',
   cardRare: 'Normal',
   cardTrunfo: false,
-  hasTrunfo: false,
   save: true,
 };
 
@@ -58,6 +57,9 @@ class App extends React.Component {
           cardTrunfo: prevState.cardTrunfo,
         }] }));
     this.setState(INITIAL_STATE);
+    if (state.cards.find((c) => c.cardTrunfo === true)) {
+      this.setState({ hasTrunfo: false });
+    } else { this.setState({ hasTrunfo: true }); }
   }
 
   validate = (state) => {
@@ -112,6 +114,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      cards,
       isSaveButtonDisabled: save,
       onInputChange: this.handleChange,
       onSaveButtonClick: this.handleSubmit,
