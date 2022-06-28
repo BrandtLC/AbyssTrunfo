@@ -3,6 +3,19 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 
+const INITIAL_STATE = {
+  name: '',
+  description: '',
+  atr1: '',
+  atr2: '',
+  atr3: '',
+  image: '',
+  rarity: 'Normal',
+  isTrunfo: false,
+  isThereTrunfo: false,
+  save: true,
+};
+
 class App extends React.Component {
   constructor() {
     super();
@@ -17,11 +30,8 @@ class App extends React.Component {
       isTrunfo: false,
       isThereTrunfo: false,
       save: true,
+      cards: [],
     };
-
-    // this.validate = this.validate.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
-    // this.change = this.change.bind(this);
   }
 
   handleChange = ({ target }) => {
@@ -29,13 +39,25 @@ class App extends React.Component {
 
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({ [param]: value }, () => this.validate(this.state));
-    // this.change(param, value);
-
-    // this.validate(this.state);
   }
 
   handleSubmit = (event) => {
+    const { state } = this;
+    console.log(state.cards);
     event.preventDefault();
+    this.setState((prevState) => ({
+      cards: [...prevState.cards,
+        {
+          name: prevState.name,
+          description: prevState.description,
+          atr1: prevState.atr1,
+          atr2: prevState.atr2,
+          atr3: prevState.atr3,
+          image: prevState.image,
+          rarity: prevState.rarity,
+          isTrunfo: prevState.isTrunfo,
+        }] }));
+    this.setState(INITIAL_STATE);
   }
 
   validate = (state) => {
@@ -63,12 +85,6 @@ class App extends React.Component {
     ) {
       this.setState({ save: false });
     } else this.setState({ save: true });
-  }
-
-  change = (param, value) => {
-    this.setState({
-      [param]: value,
-    });
   }
 
   render() {

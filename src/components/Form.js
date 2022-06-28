@@ -5,11 +5,6 @@ import Atributes from './Atributes';
 import SelectRarity from './Select';
 
 class Form extends React.Component {
-  constructor() {
-    super();
-    console.log(this);
-  }
-
   render() {
     const {
       cardName,
