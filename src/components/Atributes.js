@@ -2,11 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Atributes extends React.Component {
-  constructor() {
-    super();
-    console.log(this);
-  }
-
   render() {
     const { atr: { cardAttr1, cardAttr2, cardAttr3 }, onChangefunc } = this.props;
     return (

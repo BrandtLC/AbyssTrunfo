@@ -93,19 +93,9 @@ class Form extends React.Component {
 
         { renderCheckbox() }
 
-        {/* <label htmlFor="sptrunfo">
-          Super Trunfo
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            disabled={ hasTrunfo }
-          />
-        </label> */}
+        { console.log(cards) }
 
-        { cards.find((c) => c.cardTrunfo === true)
+        { cards && cards.find((c) => c.cardTrunfo === true)
           ? <p>Você já tem um Super Trunfo em seu baralho</p>
           : ''}
 

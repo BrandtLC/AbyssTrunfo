@@ -42,7 +42,6 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     const { state } = this;
-    console.log(state.cards);
     event.preventDefault();
     this.setState((prevState) => ({
       cards: [...prevState.cards,
