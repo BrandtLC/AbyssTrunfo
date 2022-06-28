@@ -9,15 +9,15 @@ const options = [
 
 class SelectRarity extends React.Component {
   render() {
-    const { rarity, onChangeFunc } = this.props;
+    const { cardRare, onChangeFunc } = this.props;
     return (
       <label htmlFor="rarity">
         Raridade:
         <select
           id="rarity"
-          name="rarity"
+          name="cardRare"
           data-testid="rare-input"
-          value={ rarity }
+          value={ cardRare }
           onChange={ onChangeFunc }
         >
           {options.map((i) => {
@@ -38,7 +38,7 @@ class SelectRarity extends React.Component {
 }
 
 SelectRarity.propTypes = {
-  rarity: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
   onChangeFunc: PropTypes.func.isRequired,
 };
 

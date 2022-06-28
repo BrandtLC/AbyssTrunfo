@@ -25,7 +25,7 @@ class Form extends React.Component {
           Nome
           <input
             type="text"
-            name="name"
+            name="cardName"
             id="name"
             data-testid="name-input"
             value={ cardName }
@@ -36,7 +36,7 @@ class Form extends React.Component {
         <label htmlFor="description">
           Descrição
           <textarea
-            name="description"
+            name="cardDescription"
             cols="30"
             rows="10"
             data-testid="description-input"
@@ -47,9 +47,9 @@ class Form extends React.Component {
 
         <Atributes
           atr={ {
-            atr1: cardAttr1,
-            atr2: cardAttr2,
-            atr3: cardAttr3,
+            cardAttr1,
+            cardAttr2,
+            cardAttr3,
           } }
           onChangefunc={ onInputChange }
         />
@@ -58,7 +58,7 @@ class Form extends React.Component {
           Imagem
           <input
             type="text"
-            name="image"
+            name="cardImage"
             id="path"
             data-testid="image-input"
             value={ cardImage }
@@ -67,7 +67,7 @@ class Form extends React.Component {
         </label>
 
         <SelectRarity
-          rarity={ cardRare }
+          cardRare={ cardRare }
           onChangeFunc={ onInputChange }
         />
 
@@ -75,7 +75,7 @@ class Form extends React.Component {
           Super Trunfo
           <input
             type="checkbox"
-            name="isTrunfo"
+            name="cardTrunfo"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }

@@ -4,15 +4,15 @@ import Form from './components/Form';
 import Card from './components/Card';
 
 const INITIAL_STATE = {
-  name: '',
-  description: '',
-  atr1: '',
-  atr2: '',
-  atr3: '',
-  image: '',
-  rarity: 'Normal',
-  isTrunfo: false,
-  isThereTrunfo: false,
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
+  cardImage: '',
+  cardRare: 'Normal',
+  cardTrunfo: false,
+  hasTrunfo: false,
   save: true,
 };
 
@@ -20,15 +20,15 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      description: '',
-      atr1: '',
-      atr2: '',
-      atr3: '',
-      image: '',
-      rarity: 'Normal',
-      isTrunfo: false,
-      isThereTrunfo: false,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'Normal',
+      cardTrunfo: false,
+      hasTrunfo: false,
       save: true,
       cards: [],
     };
@@ -48,40 +48,40 @@ class App extends React.Component {
     this.setState((prevState) => ({
       cards: [...prevState.cards,
         {
-          name: prevState.name,
-          description: prevState.description,
-          atr1: prevState.atr1,
-          atr2: prevState.atr2,
-          atr3: prevState.atr3,
-          image: prevState.image,
-          rarity: prevState.rarity,
-          isTrunfo: prevState.isTrunfo,
+          cardName: prevState.cardName,
+          cardDescription: prevState.cardDescription,
+          cardAttr1: prevState.cardAttr1,
+          cardAttr2: prevState.cardAttr2,
+          cardAttr3: prevState.cardAttr3,
+          cardImage: prevState.cardImage,
+          cardRare: prevState.cardRare,
+          cardTrunfo: prevState.cardTrunfo,
         }] }));
     this.setState(INITIAL_STATE);
   }
 
   validate = (state) => {
-    const atr1N = Number(state.atr1);
-    const atr2N = Number(state.atr2);
-    const atr3N = Number(state.atr3);
+    const atr1N = Number(state.cardAttr1);
+    const atr2N = Number(state.cardAttr2);
+    const atr3N = Number(state.cardAttr3);
     const soma = atr1N + atr2N + atr3N;
     const nov = 90;
     const max = 210;
     if (
-      state.name !== ''
-    && state.description !== ''
-    && state.atr1 !== ''
+      state.cardName !== ''
+    && state.cardDescription !== ''
+    && state.cardAttr1 !== ''
     && atr1N <= nov
     && atr1N >= 0
-    && state.atr2 !== ''
+    && state.cardAttr2 !== ''
     && atr2N <= nov
     && atr2N >= 0
-    && state.atr3 !== ''
+    && state.cardAttr3 !== ''
     && atr3N <= nov
     && atr3N >= 0
     && soma <= max
-    && state.image !== ''
-    && state.rarity !== ''
+    && state.cardImage !== ''
+    && state.cardRare !== ''
     ) {
       this.setState({ save: false });
     } else this.setState({ save: true });
@@ -89,55 +89,52 @@ class App extends React.Component {
 
   render() {
     const {
-      name,
-      description,
-      atr1,
-      atr2,
-      atr3,
-      image,
-      rarity,
-      isTrunfo,
-      isThereTrunfo,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
       save,
       cards,
     } = this.state;
 
     const formProps = {
-      cardName: name,
-      cardDescription: description,
-      cardAttr1: atr1,
-      cardAttr2: atr2,
-      cardAttr3: atr3,
-      cardImage: image,
-      cardRare: rarity,
-      cardTrunfo: isTrunfo,
-      hasTrunfo: isThereTrunfo,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled: save,
       onInputChange: this.handleChange,
       onSaveButtonClick: this.handleSubmit,
     };
 
     const cardPreviewProps = {
-      cardName: name,
-      cardImage: image,
-      cardDescription: description,
-      cardAttr1: atr1,
-      cardAttr2: atr2,
-      cardAttr3: atr3,
-      cardRare: rarity,
-      cardTrunfo: isTrunfo,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardTrunfo,
     };
 
-    const cardProps = {
-      cardName: cards.name,
-      cardImage: cards.image,
-      cardDescription: cards.description,
-      cardAttr1: cards.atr1,
-      cardAttr2: cards.atr2,
-      cardAttr3: cards.atr3,
-      cardRare: cards.rarity,
-      cardTrunfo: cards.isTrunfo,
-    }
+    const userCards = cards.map((c) => {
+      const prop = c;
+      if (prop) {
+        return (<Card key={ prop.Cardname } { ...prop } />);
+      }
+      return ('');
+    });
 
     return (
       <>
@@ -146,7 +143,7 @@ class App extends React.Component {
           <Form { ...formProps } />
           <Card { ...cardPreviewProps } />
         </div>
-        { cards ? <Card { ...cardProps } /> : '' }
+        { userCards }
       </>
     );
   }

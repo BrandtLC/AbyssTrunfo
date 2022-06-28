@@ -8,17 +8,17 @@ class Atributes extends React.Component {
   }
 
   render() {
-    const { atr: { atr1, atr2, atr3 }, onChangefunc } = this.props;
+    const { atr: { cardAttr1, cardAttr2, cardAttr3 }, onChangefunc } = this.props;
     return (
       <>
         <label htmlFor="atribute1">
           Atributo 1
           <input
             type="number"
-            name="atr1"
+            name="cardAttr1"
             id="atribute 1"
             data-testid="attr1-input"
-            value={ atr1 }
+            value={ cardAttr1 }
             onChange={ onChangefunc }
           />
         </label>
@@ -26,10 +26,10 @@ class Atributes extends React.Component {
           Atributo 2
           <input
             type="number"
-            name="atr2"
+            name="cardAttr2"
             id="atribute 2"
             data-testid="attr2-input"
-            value={ atr2 }
+            value={ cardAttr2 }
             onChange={ onChangefunc }
           />
         </label>
@@ -37,10 +37,10 @@ class Atributes extends React.Component {
           Atributo 3
           <input
             type="number"
-            name="atr3"
+            name="cardAttr3"
             id="atribute 3"
             data-testid="attr3-input"
-            value={ atr3 }
+            value={ cardAttr3 }
             onChange={ onChangefunc }
           />
         </label>
@@ -51,9 +51,9 @@ class Atributes extends React.Component {
 
 Atributes.propTypes = {
   atr: PropTypes.shape({
-    atr1: PropTypes.string,
-    atr2: PropTypes.string,
-    atr3: PropTypes.string,
+    cardAttr1: PropTypes.string,
+    cardAttr2: PropTypes.string,
+    cardAttr3: PropTypes.string,
   }).isRequired,
   onChangefunc: PropTypes.func.isRequired,
 };
