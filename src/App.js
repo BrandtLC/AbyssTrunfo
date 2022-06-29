@@ -202,7 +202,7 @@ class App extends React.Component {
           <Card { ...cardPreviewProps } />
         </div>
         { userCards }
-        { preMadeCards }
+        {/* { preMadeCards } */}
       </>
     );
   }
