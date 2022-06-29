@@ -50,26 +50,26 @@ class App extends React.Component {
   }
 
   handleSubmit = (event) => {
-    const ms = 0;
     event.preventDefault();
-    this.setState((prevState) => ({
-      cards: [...prevState.cards,
-        {
-          cardName: prevState.cardName,
-          cardDescription: prevState.cardDescription,
-          cardAttr1: prevState.cardAttr1,
-          cardAttr2: prevState.cardAttr2,
-          cardAttr3: prevState.cardAttr3,
-          cardImage: prevState.cardImage,
-          cardRare: prevState.cardRare,
-          cardTrunfo: prevState.cardTrunfo,
-          key: prevState.cardName,
-        }] }));
+    this.setState((prevState) => (
+      this.cardsState(prevState)
+    ), this.validadeCheckbox);
     this.setState(INITIAL_STATE);
-    setTimeout(() => {
-      this.validadeCheckbox();
-    }, ms);
   }
+
+ cardsState = (prevState) => ({
+   cards: [...prevState.cards,
+     {
+       cardName: prevState.cardName,
+       cardDescription: prevState.cardDescription,
+       cardAttr1: prevState.cardAttr1,
+       cardAttr2: prevState.cardAttr2,
+       cardAttr3: prevState.cardAttr3,
+       cardImage: prevState.cardImage,
+       cardRare: prevState.cardRare,
+       cardTrunfo: prevState.cardTrunfo,
+       key: prevState.cardName,
+     }] })
 
   validate = (state) => {
     const atr1N = Number(state.cardAttr1);
@@ -140,9 +140,28 @@ class App extends React.Component {
       cardTrunfo,
     };
 
+    const cardOnClick = (card) => {
+      this.setState((prevState) => ({
+        cards: prevState.cards.filter((c) => c.cardName !== card.cardName),
+      }));
+      if (card.cardTrunfo) this.setState({ hasTrunfo: false });
+    };
+
     const userCards = cards.map((c) => {
       if (c) {
-        return (<Card key={ c.key } { ...c } />);
+        return (
+          <div key={ `${c.key} div` }>
+            <Card { ...c } />
+            <button
+              type="button"
+              onClick={ () => cardOnClick(c) }
+              key={ `${c.key} button` }
+              data-testid="delete-button"
+            >
+              Excluir
+            </button>
+          </div>
+        );
       }
       return ('');
     });
