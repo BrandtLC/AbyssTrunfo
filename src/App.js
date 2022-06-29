@@ -2,6 +2,8 @@ import React from 'react';
 
 import Form from './components/Form';
 import Card from './components/Card';
+import Filter from './components/Filter';
+import defaultCards from './data/defaultCards';
 
 const INITIAL_STATE = {
   cardName: '',
@@ -25,11 +27,14 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: 'Normal',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       save: true,
       cards: [],
+      txtFilter: '',
+      selectFilter: 'todas',
+      checkboxFilter: false,
     };
   }
 
@@ -111,6 +116,9 @@ class App extends React.Component {
       hasTrunfo,
       save,
       cards,
+      txtFilter,
+      selectFilter,
+      checkboxFilter,
     } = this.state;
 
     const formProps = {
@@ -140,6 +148,13 @@ class App extends React.Component {
       cardTrunfo,
     };
 
+    const fitlerProps = {
+      txtFilter,
+      selectFilter,
+      checkboxFilter,
+      onInputChange: this.handleChange,
+    };
+
     const cardOnClick = (card) => {
       this.setState((prevState) => ({
         cards: prevState.cards.filter((c) => c.cardName !== card.cardName),
@@ -147,7 +162,15 @@ class App extends React.Component {
       if (card.cardTrunfo) this.setState({ hasTrunfo: false });
     };
 
-    const userCards = cards.map((c) => {
+    const userCards = cards.filter((e) => (
+      e.cardName.includes(txtFilter)
+      // && (e.cardRare === selectFilter || e.cardRare === 'blank')
+      // && e.cardTrunfo.includes(checkboxFilter)
+    )).filter((e) => (
+      e.cardRare.includes(selectFilter) || selectFilter === 'todas'
+    )).filter((e) => (
+      checkboxFilter ? e.cardTrunfo === true : true
+    )).map((c) => {
       if (c) {
         return (
           <div key={ `${c.key} div` }>
@@ -166,14 +189,20 @@ class App extends React.Component {
       return ('');
     });
 
+    const preMadeCards = defaultCards.map((c) => (
+      <Card { ...c } key={ c.cardName } />
+    ));
+
     return (
       <>
         <div>
           <h1>Abyss Trunfo</h1>
           <Form { ...formProps } />
+          <Filter { ...fitlerProps } />
           <Card { ...cardPreviewProps } />
         </div>
         { userCards }
+        { preMadeCards }
       </>
     );
   }
