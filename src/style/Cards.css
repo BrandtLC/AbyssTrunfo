@@ -1,8 +1,105 @@
+@font-face {
+  font-family: MilkyQuaker;
+  src: url('../Abyss/font/Milky\ Quaker.otf');
+}
+
 .card {
   background-image: url('../Abyss/cardBack.jpg');
   background-position: 50% 90%;
-  border: 3px solid black;
+  border: 3px solid #6b8761;
   border-radius: 15px;
+  font-family: MilkyQuaker , sans-serif;
   height: 450px;
+  position: relative;
   width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name {
+
+  /* border: 2px solid red; */
+  font-size: 20px;
+  height: 50px;
+  left: 20px;
+  position: absolute;
+  top: 5px;
+  width: 290px;
+}
+
+.cardImg {
+  height: 324px;
+  object-fit: cover;
+  object-position: top;
+  padding-top: 18px;
+  width: 300px;
+}
+
+.imgSpan {
+  box-sizing: border-box;
+  height: 344px;
+  width: 300px;
+}
+
+.data {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  top: 240px;
+}
+
+.description {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid #434443;
+  border-radius: 5px;
+  color: rgb(216, 220, 220);
+  font-size: 14px;
+  height: 100px;
+  overflow-y: scroll;
+  text-align: center;
+  width: 289px;
+  margin-left: 5px;
+}
+
+.description::-webkit-scrollbar-track {
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px grey;
+}
+
+.description::-webkit-scrollbar {
+  width: 10px;
+}
+
+.description::-webkit-scrollbar-thumb {
+  background-color: #accda1;
+  border-radius: 5px;
+  height: 1px;
+}
+
+.data span {
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  padding: 0 5px;
+  width: 96%;
+}
+
+.status {
+  color: rgb(216, 220, 220);
+  display: flex;
+  justify-content: center;
+  width: 15%;
+}
+
+.atrSpan {
+  background-image: -webkit-linear-gradient(30deg, #1d7546d4 80%, #262727e7 20%);
+}
+
+.trunfo {
+  color: white;
 }

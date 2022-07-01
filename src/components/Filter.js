@@ -19,10 +19,12 @@ class Filter extends React.Component {
     return (
       <div>
         <label htmlFor="txtFilter">
-          Filtro:
+          <h4>
+            Filter:
+          </h4>
           <input
             type="text"
-            id="txtFilter"
+            className="txtFilter"
             name="txtFilter"
             data-testid="name-filter"
             value={ txtFilter }
@@ -31,9 +33,11 @@ class Filter extends React.Component {
         </label>
 
         <label htmlFor="rarityFilter">
-          Raridade:
+          <h4>
+            Raridade:
+          </h4>
           <select
-            id="rarityFilter"
+            className="rarityFilter"
             name="selectFilter"
             data-testid="rare-filter"
             value={ selectFilter }
@@ -55,11 +59,13 @@ class Filter extends React.Component {
         </label>
 
         <label htmlFor="trunfoFilter">
-          Super Trunfo
+          <h4>
+            Super Trunfo
+          </h4>
           <input
             type="checkbox"
             name="checkboxFilter"
-            id="trunfoFilter"
+            className="trunfoFilter"
             data-testid="trunfo-filter"
             checked={ checkboxFilter }
             onChange={ onInputChange }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../style/Form.css';
 
 import Atributes from './Atributes';
 import SelectRarity from './Select';
@@ -26,11 +27,14 @@ class Form extends React.Component {
       if (!hasTrunfo) {
         return (
           <label htmlFor="sptrunfo">
-            Super Trunfo
+            <h4 className="titles">
+              Super Trunfo
+            </h4>
             <input
               type="checkbox"
               name="cardTrunfo"
               data-testid="trunfo-input"
+              className="trunfoCheck"
               checked={ cardTrunfo }
               onChange={ onInputChange }
             />
@@ -40,23 +44,30 @@ class Form extends React.Component {
 
     return (
       <form onSubmit={ onSaveButtonClick }>
-        <label htmlFor="name">
-          Nome
+        <label htmlFor="name" className="txtLabel">
+          <h4 className="titles">
+            Nome:
+          </h4>
           <input
             type="text"
             name="cardName"
+            className="txtInput"
             id="name"
             data-testid="name-input"
+            autoComplete="off"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="description">
-          Descrição
+        <label htmlFor="description" className="txtLabel">
+          <h4 className="titles">
+            Descrição:
+          </h4>
           <textarea
             name="cardDescription"
             cols="30"
+            className="txtInput"
             rows="10"
             data-testid="description-input"
             value={ cardDescription }
@@ -73,12 +84,16 @@ class Form extends React.Component {
           onChangefunc={ onInputChange }
         />
 
-        <label htmlFor="path">
-          Imagem
+        <label htmlFor="path" className="txtLabel">
+          <h4 className="titles">
+            Imagem:
+          </h4>
           <input
             type="text"
             name="cardImage"
+            className="txtInput"
             id="path"
+            autoComplete="off"
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }

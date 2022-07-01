@@ -1,9 +1,11 @@
 import React from 'react';
+import './style/App.css';
 
 import Form from './components/Form';
 import Card from './components/Card';
 import Filter from './components/Filter';
 import defaultCards from './data/defaultCards';
+import Logo from './Abyss/LogoFinal.png';
 
 const INITIAL_STATE = {
   cardName: '',
@@ -195,14 +197,27 @@ class App extends React.Component {
 
     return (
       <>
-        <div>
-          <h1>Abyss Trunfo</h1>
-          <Form { ...formProps } />
-          <Filter { ...fitlerProps } />
-          <Card { ...cardPreviewProps } />
-        </div>
-        { userCards }
-        {/* { preMadeCards } */}
+        <header className="creation">
+          <img src={ Logo } className="logo" alt="Abyss tunfo" />
+          <div className="creationContent">
+            <Form className="formComp" { ...formProps } />
+            <Card { ...cardPreviewProps } />
+          </div>
+        </header>
+        <main>
+          <section className="mainContent">
+            <span className="filter">
+              <Filter { ...fitlerProps } />
+            </span>
+
+            <section className="allCards">
+              { userCards }
+              { preMadeCards }
+            </section>
+
+          </section>
+
+        </main>
       </>
     );
   }

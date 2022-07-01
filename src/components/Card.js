@@ -18,24 +18,57 @@ class Card extends React.Component {
     function trunfoRender(prop) {
       if (prop) {
         return (
-          <p data-testid="trunfo-card">Super Trunfo</p>
+          <p className="trunfo" data-testid="trunfo-card">Super Trunfo</p>
         );
       }
     }
     return (
-      <div className="card">
-        <span>
-          <h2 data-testid="name-card">{ cardName }</h2>
-        </span>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <p data-testid="description-card">{ cardDescription }</p>
-        <p data-testid="attr1-card">{ cardAttr1 }</p>
-        <p data-testid="attr2-card">{ cardAttr2 }</p>
-        <p data-testid="attr3-card">{ cardAttr3 }</p>
-        <p data-testid="rare-card">{ cardRare }</p>
-        { trunfoRender(cardTrunfo) }
+      <section className="cardSection">
+        <div className="card">
+          <span className="name">
+            <p data-testid="name-card">{ cardName }</p>
+          </span>
+          <span className="imgSpan">
+            { cardImage && (<img
+              className="cardImg"
+              src={ cardImage }
+              alt={ cardName }
+              data-testid="image-card"
+            />) }
+            {/* <img
+            className="cardImg"
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+          /> */}
 
-      </div>
+          </span>
+          <span className="data">
+            <p
+              className="description"
+              data-testid="description-card"
+            >
+              { cardDescription }
+            </p>
+            <span className="atrSpan">
+              <p>Strength</p>
+              <p className="status" data-testid="attr1-card">{ cardAttr1 }</p>
+            </span>
+            <span className="atrSpan">
+              <p>Agility</p>
+              <p className="status" data-testid="attr2-card">{ cardAttr2 }</p>
+            </span>
+            <span className="atrSpan">
+              <p>Abyss knowlege</p>
+              <p className="status" data-testid="attr3-card">{ cardAttr3 }</p>
+            </span>
+            <span>
+              <p data-testid="rare-card">{ cardRare }</p>
+              { trunfoRender(cardTrunfo) }
+            </span>
+          </span>
+        </div>
+      </section>
 
     );
   }

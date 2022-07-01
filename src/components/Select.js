@@ -12,10 +12,13 @@ class SelectRarity extends React.Component {
     const { cardRare, onChangeFunc } = this.props;
     return (
       <label htmlFor="rarity">
-        Raridade:
+        <h4 className="titles">
+          Raridade:
+        </h4>
         <select
           id="rarity"
           name="cardRare"
+          className="selectInput"
           data-testid="rare-input"
           value={ cardRare }
           onChange={ onChangeFunc }

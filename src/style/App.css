@@ -1,0 +1,141 @@
+@font-face {
+  font-family: MilkyQuaker;
+  src: url('../Abyss/font/milky-quaker-cufonfonts/MilkyQuaker-7Bw8V.otf');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100&family=Open+Sans&display=swap') ;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* header {
+  background-color: #517e46;
+} */
+
+.logo {
+  width: 300px;
+}
+
+.creation {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: Open Sans , sans-serif;
+  gap: 20px;
+  justify-content: center;
+  background-image: url("../Abyss/formBg.jpg");
+  background-position: 95% 30%;
+  background-size: 130%;
+  width: 100%;
+  height: 800px;
+}
+
+.creationContent {
+  align-items: center;
+  /* border: 2px solid red; */
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  justify-content: space-between;
+  width: 1100px;
+}
+
+/* .creationContent input {
+  width: 50px;
+} */
+
+.selectInput {
+  -webkit-appearance: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  color: aliceblue;
+  cursor: pointer;
+  height: 30px;
+  text-align: center;
+  border-radius: 15px;
+  width: 100px;
+}
+
+.trunfoCheck {
+  width: 20px;
+  height: 20px;
+  -webkit-appearance: none;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 30%;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.trunfoCheck:checked {
+  background-color: #accda1;
+}
+
+.creationContent button {
+  background: none;
+  border: 2px solid #2aa900;
+  border-radius: 5px;
+  color: #2aa900;
+  height: 30px;
+  width: 80px;
+}
+
+/* .mainContent {
+  display: flex;
+  height: 200vh;
+}
+
+.allCards {
+  background-image: url("../Abyss/abyss\ completo.jpeg");
+  background-position: 50% 0;
+  border: 2px solid red;
+  column-gap: 30%;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+} */
+
+.mainContent {
+  align-items: center;
+  background-image: url("../Abyss/abyss\ completo.jpeg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 200vh;
+  width: 100%;
+}
+
+.filter div {
+  display: flex;
+  padding: 20px;
+}
+
+.cardSection {
+  display: inline-block;
+}
+
+.allCards {
+  border: 2px solid green;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  column-gap: 30%;
+  row-gap: 30px;
+}
+
+.txtFilter {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: solid rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: aliceblue;
+  height: 40px;
+  padding: 5px;
+  width: 300px;
+}
